@@ -1,0 +1,8 @@
+.itemPrev {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    row-gap: 40px;
+    column-gap: 40px;
+    padding: 40px 0;
+}

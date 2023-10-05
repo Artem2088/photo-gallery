@@ -1,0 +1,54 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    padding-left: 46%;
+    max-width: 400px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.formDisabled {
+    display: none;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.inputAdd {
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px 0;
+    background-color: white;
+}
+
+.inputAdd:valid {
+    border: 2px solid green;
+}
+
+.inputAdd:invalid {
+    border: 2px solid red;
+}
+
+.inputAdd::placeholder {
+    padding-left: 10px;
+}
+
+.button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 10px 0;
+    background-color: white;
+    border-radius: 5px;
+    width: 100%;
+}

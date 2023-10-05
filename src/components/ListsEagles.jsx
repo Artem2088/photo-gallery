@@ -10,12 +10,6 @@ const ListsEagle = () => {
   const [active, setIsActive] = useState(false);
   const [openPopup, setOpenPopup] = useState({ url: "", title: "" });
   const [listsItem, setListsItems] = useState([]);
-
-  function fetchMoreListItems() {
-    setListsItems([...listsItem, ...data.allEagles]);
-    setIsFetching(false);
-  }
-
   const { setIsFetching } = useInfiniteScroll(fetchMoreListItems);
 
   useEffect(() => {
@@ -34,14 +28,23 @@ const ListsEagle = () => {
     return <h2>Error...</h2>;
   }
 
+  function fetchMoreListItems() {
+    setListsItems([...listsItem, ...data.allEagles]);
+    setIsFetching(false);
+  }
+
   const handleClick = (title, url) => {
     setOpenPopup({ url: url, title: title });
     setIsActive(!active);
   };
 
+  const deleteCollection = () => {
+    setListsItems([]);
+  };
+
   return (
     <>
-      <Header />
+      <Header deleteCollection={deleteCollection} />
       <ul className={styles.itemPrev}>
         {listsItem.map((item, index) => (
           <ListItemEagle item={item} key={index} handleClick={handleClick} />

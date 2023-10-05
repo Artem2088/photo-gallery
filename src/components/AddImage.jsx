@@ -11,7 +11,7 @@ import {
 } from "../apolo/photos";
 import { useHref } from "react-router";
 
-const AddImage = ({ open }) => {
+const AddImage = ({ open, setIsOpen }) => {
   const path = useHref();
   const [url, setUrl] = useState("");
   const [title, setTitle] = useState("");
@@ -92,6 +92,13 @@ const AddImage = ({ open }) => {
         },
       });
     }
+    setIsOpen(!open);
+    reset();
+  };
+
+  const reset = () => {
+    setTitle("");
+    setUrl("");
   };
 
   if (error || errorAddLion || errorAddBear) {

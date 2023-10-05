@@ -3,7 +3,7 @@ import styles from "../styles/Header.module.css";
 import AddImage from "./AddImage";
 import { useState } from "react";
 
-const Header = () => {
+const Header = ({ deleteCollection }) => {
   const path = useHref();
   const [open, setIsOpen] = useState(false);
 
@@ -16,13 +16,20 @@ const Header = () => {
       <div className={styles.upperContainer}>
         <h1 className={styles.title}>PHOTO_GALERY</h1>
         <div className={styles.buttomContainer}>
-          <Link to={"/admin"}>
-            <button className={styles.headerButton} type="button">
-              <span className={styles.headerSpan}>
-                {path == "/admin" ? "You are Admin" : "Go to Admin"}
-              </span>
-            </button>
-          </Link>
+          {path == "/admin/eagles" ||
+          path == "/admin/lions" ||
+          path == "/admin/bears" ? (
+            " "
+          ) : (
+            <Link to={"/admin"}>
+              <button className={styles.headerButton} type="button">
+                <span className={styles.headerSpan}>
+                  {path == "/admin" ? "You are Admin" : "Go to Admin"}
+                </span>
+              </button>
+            </Link>
+          )}
+
           {path == "/" ? (
             ""
           ) : (
@@ -47,9 +54,22 @@ const Header = () => {
           ) : (
             " "
           )}
+          {path == "/admin/eagles" ||
+          path == "/admin/lions" ||
+          path == "/admin/bears" ? (
+            <button
+              className={styles.headerButton}
+              type="button"
+              onClick={() => deleteCollection()}
+            >
+              <span className={styles.headerSpan}>Удалить коллекцию</span>
+            </button>
+          ) : (
+            " "
+          )}
         </div>
       </div>
-      <AddImage open={open} />
+      <AddImage open={open} setIsOpen={setIsOpen} />
     </header>
   );
 };

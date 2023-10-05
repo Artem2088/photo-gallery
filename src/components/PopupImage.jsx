@@ -1,7 +1,15 @@
+import { useEffect } from "react";
 import styles from "../styles/Popup.module.css";
 
 const PopupImage = ({ image, setIsActive }) => {
-  const { id, url, title } = image;
+  const { url, title } = image;
+
+  useEffect(() => {
+    document.body.style.overflowY = "hidden";
+    return () => {
+      document.body.style.overflowY = "auto";
+    };
+  }, []);
 
   return (
     <div
